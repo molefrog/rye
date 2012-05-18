@@ -28,22 +28,22 @@ describe('class PolynomRing', function() {
 		expect( ring.norm( ring.polynom([1, 2, 0, 2, 0, 0, 0]))).toEqual(3);
 	});
 	
-	it('can return number of elements with same norm', function() {
-		expect( ring.normCount( -Infinity) ).toEqual(1);
-		expect( ring.normCount( 0 ) ).toEqual( ring.field.order - 1);
-		expect( ring.normCount( 2 ) ).toEqual( 6*7*7 );
-	});
+	// it('can return number of elements with same norm', function() {
+		// expect( ring.normCount( -Infinity) ).toEqual(1);
+		// expect( ring.normCount( 0 ) ).toEqual( ring.field.order - 1);
+		// expect( ring.normCount( 2 ) ).toEqual( 6*7*7 );
+	// });
 	
-	it('can construct polynom by an index', function() {
-		expect( ring.element(0).coefficients() ).toEqual([0]);
-		expect( ring.element(10).coefficients() ).toEqual([3, 1]);
-	});
+	// it('can construct polynom by an index', function() {
+		// expect( ring.element(0).coefficients() ).toEqual([0]);
+		// expect( ring.element(10).coefficients() ).toEqual([3, 1]);
+	// });
 	
-	it('can obtain polynom index', function() {
-		expect( ring.index(ring.polynom()) ).toEqual(0);
-		expect( ring.index(ring.polynom([1])) ).toEqual(1);
-		expect( ring.index(ring.polynom([1, 0, 1])) ).toEqual(50);
-	});
+	// it('can obtain polynom index', function() {
+		// expect( ring.index(ring.polynom()) ).toEqual(0);
+		// expect( ring.index(ring.polynom([1])) ).toEqual(1);
+		// expect( ring.index(ring.polynom([1, 0, 1])) ).toEqual(50);
+	// });
 	
 	it('can add two polynoms', function() {
 		var p1 = ring.polynom([1, 0, 2, 5]);
@@ -71,4 +71,18 @@ describe('class PolynomRing', function() {
 		
 		expect( binaryRing.mod( binaryRing.polynom([1, 0, 1]), binaryRing.polynom([1, 1])).coefficients() ).toEqual([0]);
 	});
+	
+	it('can compare two polynoms', function() {
+		expect( ring.equal(ring.polynom(), ring.polynom([1, 2, 3]) )).toBeFalsy();
+		expect( ring.equal(ring.polynom(), ring.polynom()) ).toBeTruthy();
+		expect( ring.equal(ring.polynom([1, 2, 3, 0, 0, 0, 0, 0]), ring.polynom([1, 2, 3]) ) ).toBeTruthy();
+	});
+	
+	it('can build factor set', function() {
+		var factorSet = ring.factorSet( ring.polynom([1, 2, 1, 1]) );
+		
+		expect( ring.equal(ring.polynom(), factorSet[0]) ).toBeTruthy();
+		expect( factorSet.length).toEqual(Math.pow(ring.field.order, 3));
+		expect( ring.factorSet(ring.polynom([1])).length).toEqual(1);
+	});	
 });
