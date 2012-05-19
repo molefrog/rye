@@ -7,14 +7,14 @@ describe('class PolynomRing', function() {
 			var nullPolynom = ring.polynom();
 			
 			expect( nullPolynom.coefficients() ).toEqual([0]);
-			expect( nullPolynom.power() ).toEqual(-Infinity);
+			expect( nullPolynom.degree() ).toEqual(-Infinity);
 			expect( nullPolynom.app(4) ).toEqual(0);
 			expect( nullPolynom.app(3) ).toEqual(0);
 		});
 		
-		it('has power property', function() {
-			expect( ring.polynom([1, 1, 1, 1]).power() ).toEqual(3);
-			expect( ring.polynom([0, 0, 1, 0, 0, 0, 0]).power() ).toEqual(2);
+		it('has degree property', function() {
+			expect( ring.polynom([1, 1, 1, 1]).degree() ).toEqual(3);
+			expect( ring.polynom([0, 0, 1, 0, 0, 0, 0]).degree() ).toEqual(2);
 		});
 		
 		it('can be applicabled', function() {
@@ -38,8 +38,8 @@ describe('class PolynomRing', function() {
 	});
 	
 	it('can multiply two polynoms', function() {
-		expect( ring.mul( ring.polynom([0, 0, 1]), ring.polynom([0, 1])).power() ).toEqual(3);
-		expect( ring.mul( ring.polynom(), ring.polynom([1, 2, 2])).power() ).toEqual(-Infinity);
+		expect( ring.mul( ring.polynom([0, 0, 1]), ring.polynom([0, 1])).degree() ).toEqual(3);
+		expect( ring.mul( ring.polynom(), ring.polynom([1, 2, 2])).degree() ).toEqual(-Infinity);
 		expect( ring.mul( ring.polynom([1, 2, 1]), ring.polynom([1, 2])).coefficients() ).toEqual([ 1, 4, 5, 2 ]);
 	});
 	
