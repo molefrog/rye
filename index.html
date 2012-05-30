@@ -3,6 +3,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<link rel="stylesheet" href="static/styles.css" type="text/css">
+		
+		<!-- Highlight.js library for code highlighting. Thanks to Ivan Salagaev -->
+		<script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+		<script> hljs.initHighlightingOnLoad(); </script>
+		<!-- Using Zenburn theme -->
+		<link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/zenburn.min.css">
+		
 		<title>Rye.js</title>
 	</head>
 	
@@ -19,9 +26,57 @@
 		
 		<h2>&#10043; Legend &#10043;</h2>
 		<p>
-			Rye.js &mdash; is a JavaScript library that allows to work with finite (Galois) fields.
+			Rye.js &mdash; is a JavaScript library that allows to work with 
+			<a href="http://en.wikipedia.org/wiki/Finite_field">finite (Galois) fields.</a>
 			With Rye.js you can construct prime fields as well as build extension of existing field. 
 			And yes, you can use it in your browser!
+		</p>
+		<h2>&#10043; How to use? &#10043;</h2>
+		<p>
+			First, construct a prime field:
+<pre><code class="javascript">var field = new PrimeField(7);
+
+// Fields have + and * operations
+field.add(5, 4); // = 2
+field.mul(2, 6); // = 5
+
+// Fields have 1 and 0
+field.add(field.nullElement(), 3); // = 3
+field.mul(field.oneElement(), 5);  // = 5
+
+// Opposite element, inverse element, etc.
+field.opp(3); // = 4
+field.inv(3); // = 5
+</code></pre>
+			
+		</p>
+		
+		<p>
+			Now, make a polynom ring based on this field:
+<pre><code class="javascript">var ring = new PolynomRing(field);
+
+// Construct polynoms
+var polynom = ring.polynom([3, 0, 4]); // 3 + 4x^2
+var nullPolynom = ring.polynom(); // 0
+
+// Each polynom has a degree
+polynom.degree();       // = 2
+nullPolynom.degree();   // = -Infinity
+
+// You can add, multiply, divide polynoms
+ring.add(polynom, ring.polynom([5, 1]); // = [1, 1, 4]
+ring.mod(polynom, nullPolynom); // Exception: division by zero!
+</code></pre>
+		</p>	
+		
+		<p>
+		Finally, extend your field by factorizing ring using irreducible polynom:
+<pre><code class="javascript">var extField = new FactorRing(ring, ring.polynom([3, 1, 2]));
+
+// This structure is also a field (of course, if polynom 
+// is irreducible, otherwise it is a ring)
+var extFieldOrder = extField.order; // == 7^2
+</code></pre>		
 		</p>
 		
 		<h2>&#10043; Specs &#10043;</h2>
