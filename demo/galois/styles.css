@@ -1,0 +1,99 @@
+body {
+	font-size	: 0.75em;
+	font-family :  "Bookman Old Style";
+	margin 		: 0 7%;
+	line-height	: 1.25em;
+	text-align	: justify;
+}
+
+div.header {
+	font-size   	: 4em;
+	margin 			: 0 0 0 0;
+	padding 		: 0;
+	font-weight 	: 100;
+	text-align 		: center;
+	line-height		: 1.2em;
+}
+
+h3 {
+	font-weight : 100;
+	margin 		: 1em 0em 0.3em 0em;
+}
+
+
+table.field_table {
+	text-align 		: center;
+	border			: 0px;
+	border-collapse : collapse;
+}
+
+table.field_table tr:nth-child(2n+1) {
+	background-color : #f9f9f9;
+}
+
+table.operation_table tr:first-child,
+table.operation_table tr td:first-child,
+table.elements_table  tr td:first-child 
+{
+	background-color: #f3f3f3;
+}
+
+div.separator {
+	font-size	: 2.25em;
+	margin 		: 0.5em 0em 0.5em 0em;
+}
+
+div.colored_element {
+	border		: 1px solid; 
+	min-height	: 1.2em; 
+	width 		: 1.2em; 
+	display 	: block; 
+}
+
+div.text_element {
+	margin 		: 0.25em 0.5em;
+}
+
+/* -------------------------------------------------- */
+/* Button styles                                      */
+/* -------------------------------------------------- */
+.button {	
+	text-decoration 	: none;
+	color 				: #222222;
+	padding 			: 4px;
+	margin 				: 0px;
+	display 			: inline-block;
+	border-radius		: 3px 3px;
+	border 				: 1px solid #bbbbbb;
+}
+
+.button:active, .button.selected, .button:hover {
+	background-color 	: #f0f0f0;
+}
+
+.button.close {
+	color 				: #F74A50;
+}	
+
+div.polynoms_list {
+	margin 		: auto;
+	width 		: 60%;
+	text-align  : center;
+}
+
+div.polynom_container {
+	margin 	: 0.25em 0.5em;
+	padding : 0.2em;
+	cursor  : pointer;
+	display : inline-block;
+}
+.irreducible_polynom {
+	border 				: 1px dotted;
+//	background-color	: #f0f0f0;
+}
+
+select.order_select {
+	font-size : 1em;
+}
+
+

@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta>
+		<!-- This application styles -->
+		<link rel="stylesheet" href="styles.css" type="text/css">
+	
+		<!-- External libraries from CDN -->
+		<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
+		
+        <!-- The Rye.js library to work with Galois fields -->
+		<script type="text/javascript" src="http://molefrog.github.com/rye/lib/rye.js"></script>
+        <!-- Application -->
+		<script type="text/javascript" src="app.js"></script> 
+		
+		<title>Galois fields with Rye.js</title>
+	</head>
+	
+	<body>
+		<div class="header">
+			Galois fields
+		</div>
+		<!-- Application view -->
+		<center>
+			<div id="application_view"> 
+				<h3>
+					Build prime field with order
+					<select class="prime_order_select"> 
+						<option value="0">-</option>
+					</select> 
+				</h3>
+				<div id = "fields_list"> </div>
+			</div>
+		</center>
+		
+		<!-- -------------------------------------------------------------------------------- -->
+		<!--                            FieldView template                                    --> 
+		<!-- -------------------------------------------------------------------------------- -->
+		<script type="text/template" id="field_template">	
+			<div class="separator"> <%= fieldName %> </div>
+		
+			<span class="view_mode_group">
+				<a href="javascript:void(0);" class="button mode_indexes">Indexes</a>
+				<a href="javascript:void(0);" class="button mode_normal">Normal</a>
+				<a href="javascript:void(0);" class="button mode_color">Color</a>
+				<a href="javascript:void(0);" class="button mode_nightmare">Pedantic</a>
+			<span>
+			
+			<a href="javascript:void(0);" class="button close">Remove</a>
+			<h3>Elements table</h3>	
+			<table class="elements_table field_table">
+				<tr>
+					<td>Index</td>
+					<% _(_.range(0, field.order)).each(function(i) { %>
+						<td> 
+							<%= indexRender(i) %>
+						</td>
+					<% }); %>
+				</tr>
+			
+				<tr>
+					<td>Element</td>
+					<% _(_.range(0, field.order)).each(function(i) { %>
+						<td> 
+							<%= elementRender(i) %> 
+						</td>
+					<% }); %>
+				</tr>
+			
+				<tr>
+					<td>Opposite</td>
+					<% _(_.range(0, field.order)).each(function(i) { %>
+						<td> 
+							<%= elementRender(field.opp(i)) %> 
+						</td>
+					<% }); %>
+				</tr>
+				
+				<tr>
+					<td>Inverse</td>
+					<% _(_.range(0, field.order)).each(function(i) { %>
+						<td> 
+							<%= elementRender(field.inv(i)) %> 
+						</td>
+					<% }); %>
+				</tr>
+		
+			</table>
+			
+			<h3> Addition table </h3>
+			
+			<table class="operation_table field_table">
+				<% _(_.range(-1, field.order)).each(function(i) { %>
+					<tr>
+						<% _(_.range(-1, field.order)).each(function(j) { %>
+							<td>
+								<% if(i === -1 && j === -1) { %>
+									<%= latexify("+") %>
+								<% } else if(i === -1) { %>
+									<%= elementRender(j) %>
+								<% } else if(j === -1) { %>
+									<%= elementRender(i) %>
+								<% } else { %>
+									<%= elementRender(field.add(i,j)) %>
+								<% } %>
+							</td>
+						<% }); %>
+					</tr>
+				<% }); %>
+			</table>
+			
+			<h3> Multiplication table </h3>
+			
+			<table class="operation_table field_table">
+				<% _(_.range(-1, field.order)).each(function(i) { %>
+					<tr>
+						<% _(_.range(-1, field.order)).each(function(j) { %>
+							<td>
+								<% if(i === -1 && j === -1) { %>
+									<%= latexify("\\times") %>
+								<% } else if(i === -1) { %>
+									<%= elementRender(j) %>
+								<% } else if(j === -1) { %>
+									<%= elementRender(i) %>
+								<% } else { %>
+									<%= elementRender(field.mul(i,j)) %>
+								<% } %>
+							</td>
+						<% }); %>
+					</tr>
+				<% }); %>
+			</table>
+			
+			<div class="polynoms_view_box">
+				<!-- Here will be a polynom view -->
+			</div>
+			
+			<br> <br>
+		</script>
+		
+		<!-- -------------------------------------------------------------------------------- -->
+		<!--                            PolynomsView template                                 --> 
+		<!-- -------------------------------------------------------------------------------- -->
+		<script type="text/template" id="polynoms_template">
+			<!-- Header with degree select box -->
+			<h3>
+				Polynomials with degree
+				<select class="order_select"> 
+					<option value="0">-</option>
+				</select> 
+			</h3>
+			
+			<div class="polynoms_list"> 
+				<!-- Here polynoms will be placed -->
+			</div>
+		</script>
+		
+		<!-- This one will configure MathJax to support additional inline math delimeters -->
+		<script type="text/javascript">
+			MathJax.Hub.Config({
+			  tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']],
+				processEscapes: true
+			  }
+			});
+		</script>
+	</body>
+</html>
