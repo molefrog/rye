@@ -2,7 +2,7 @@ $(document).ready(function () {
 
 var fieldOrderFirstRenderLimit 	= 12;
 var fieldOrderRenderLimit 		= 32; 	
-var fieldOrderLimit 			= 64;
+var fieldOrderLimit 			= 70;
 var polynomsLimit				= 64;
 	
 // -------------------------------------------------------------------
@@ -201,7 +201,7 @@ PolynomsModel = Backbone.Model.extend({
 		var ring = this.get('ring');
 	
 		var maxOrder = 1;
-		while(Math.pow(ring.field.order, maxOrder) < fieldOrderLimit) {
+		while(Math.pow(ring.field.order, maxOrder+1) < fieldOrderLimit) {
 			++maxOrder;
 		}
 		
@@ -333,7 +333,7 @@ AppView = Backbone.View.extend({
 	initialize: function() {	
 		Fields.bind('add', this.addField, this);
 		var that = this;
-		_([2,3,5,7,11]).each(function(i) {
+		_([2,3,5,7,11,13,17,19,23]).each(function(i) {
 			var listItem = $('<option>').attr('value', i).text(i);
 				
 			that.$('.prime_order_select').append(listItem);
