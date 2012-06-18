@@ -52,6 +52,17 @@ describe('class PolynomRing', function() {
 		var binaryRing = new PolynomRing(new PrimeField(2));
 		
 		expect( binaryRing.mod( binaryRing.polynom([1, 0, 1]), binaryRing.polynom([1, 1])).coefficients() ).toEqual([0]);
+		expect(function() { 
+			binaryRing.mod( binaryRing.polynom[1, 0, 1], binaryRing.polynom());
+		}).toThrow();
+	});
+	
+	it('can do integer division', function() {
+		var binaryRing = new PolynomRing(new PrimeField(2));
+		
+		expect( binaryRing.div( binaryRing.polynom([1, 0, 1]), binaryRing.polynom([1, 1])).coefficients() ).toEqual([1, 1]);
+		expect( binaryRing.div( binaryRing.polynom([1, 0, 0, 1]), binaryRing.polynom([1, 1])).coefficients() ).toEqual([1, 1, 1]);
+		expect( binaryRing.div( binaryRing.polynom([1, 0, 1]), binaryRing.polynom([1, 1, 1, 1])).coefficients() ).toEqual([0]);
 	});
 	
 	it('can compare two polynoms', function() {
