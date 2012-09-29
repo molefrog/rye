@@ -1,6 +1,7 @@
-body {
-	font-family 	: 'Bookman Old Style', 'Garamond';
-	margin 			: 0 25%;
+﻿body {
+	font-family 	: 'Bookman Old Style', 'Book Antiqua', 'Garamond', 'Georgia';
+	margin 			: 0 auto;
+	width			: 50%;
 	margin-bottom 	: 2.5em;
 	text-align		: justify;
 	min-width		: 40em;

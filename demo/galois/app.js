@@ -1,9 +1,8 @@
 $(document).ready(function () {	
 
-var fieldOrderFirstRenderLimit 	= 12;
 var fieldOrderRenderLimit 		= 32; 	
-var fieldOrderLimit 			= 70;
-var polynomsLimit				= 64;
+var fieldOrderLimit 			= 100;
+var polynomsLimit				= 32;
 	
 // -------------------------------------------------------------------
 // FieldModel class
@@ -11,11 +10,7 @@ var polynomsLimit				= 64;
 FieldModel = Backbone.Model.extend({
 	// Constructor
 	initialize : function() {
-		if(this.get('field').order < fieldOrderFirstRenderLimit) {
-			this.set('renderMode', 'normal');
-		} else {
-			this.set('renderMode', 'indexes');
-		}
+		this.set('renderMode', 'color');
 		
 		var ring = new PolynomRing(this.get('field'));
 		this.polynoms = new PolynomsModel({ 'ring' : ring });
@@ -147,8 +142,8 @@ FieldView = Backbone.View.extend({
 			
 		} else if(renderMode === 'color') {
 			elementRenderFunc = function(i) {
-				var colorCode = (255 - Math.round(255.0 * i / field.order));
-				var color = 'rgb(' + 0 + ',' + colorCode + ',' + colorCode + ')';
+				var colorCode = hsvToRgb(360.0 * i / field.order, 60, 80);
+				var color = 'rgb(' + colorCode[0] + ',' + colorCode[1] + ',' + colorCode[2] + ')';
 				
 				var colorItem = $('<div>')
 					.addClass('colored_element')
@@ -333,7 +328,7 @@ AppView = Backbone.View.extend({
 	initialize: function() {	
 		Fields.bind('add', this.addField, this);
 		var that = this;
-		_([2,3,5,7,11,13,17,19,23]).each(function(i) {
+		_([2,3,5,7,11,13,17,19,23,29,31,37,41,43]).each(function(i) {
 			var listItem = $('<option>').attr('value', i).text(i);
 				
 			that.$('.prime_order_select').append(listItem);

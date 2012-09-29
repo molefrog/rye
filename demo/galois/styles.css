@@ -1,57 +1,66 @@
 body {
-	font-size	: 0.75em;
-	font-family :  "Bookman Old Style";
-	margin 		: 0 7%;
-	line-height	: 1.25em;
-	text-align	: justify;
-}
-
-div.header {
-	font-size   	: 4em;
-	margin 			: 0 0 0 0;
-	padding 		: 0;
-	font-weight 	: 100;
-	text-align 		: center;
-	line-height		: 1.2em;
+	font-size			: 0.85em;
+	font-family 		: 'Bookman Old Style', 'Book Antiqua', 'Garamond', 'Georgia';
+	margin 				: 0 auto;
+	text-align			: justify;
 }
 
 h3 {
-	font-weight : 100;
-	margin 		: 1em 0em 0.3em 0em;
+	font-weight 		: 100;
+	margin 				: 1em 0em 0.3em 0em;
 }
 
+td, th {
+	padding				: 0px;
+	margin				: 0px;
+}
 
+div.header {
+	font-family			: 'Ceviche One';
+	color				: #C67474;
+	text-shadow			: 1px 1px 1px black;
+	font-size   		: 7em;
+	margin 				: 0 0 0 0;
+	padding 			: 0;
+	font-weight 		: 100;
+	text-align 			: center;
+	line-height			: 1em;
+}
+
+/* -------------------------------------------------- */
+/* Table styles                                       */
+/* -------------------------------------------------- */
 table.field_table {
-	text-align 		: center;
-	border			: 0px;
-	border-collapse : collapse;
+	text-align 			: center;
+	border				: none;
+	border-collapse 	: collapse;
 }
 
 table.field_table tr:nth-child(2n+1) {
-	background-color : #f9f9f9;
+	background-color 	: #f9f9f9;
 }
 
 table.operation_table tr:first-child,
 table.operation_table tr td:first-child,
 table.elements_table  tr td:first-child 
 {
-	background-color: #f3f3f3;
+	background-color	: #f3f3f3;
 }
 
 div.separator {
-	font-size	: 2.25em;
-	margin 		: 0.5em 0em 0.5em 0em;
+	font-size			: 2.25em;
+	margin 				: 0.5em 0em 0.5em 0em;
 }
 
 div.colored_element {
-	border		: 1px solid; 
-	min-height	: 1.2em; 
-	width 		: 1.2em; 
-	display 	: block; 
+	border				: none;
+	min-height			: 1.6em; 
+	width 				: 1.6em; 
+	display 			: block; 
 }
 
 div.text_element {
-	margin 		: 0.25em 0.5em;
+	margin 				: 0.25em 0.5em;
 }
 
 /* -------------------------------------------------- */
@@ -75,25 +84,25 @@ div.text_element {
 	color 				: #F74A50;
 }	
 
+/* -------------------------------------------------- */
+/* List of polynoms                                   */
+/* -------------------------------------------------- */
 div.polynoms_list {
-	margin 		: auto;
-	width 		: 60%;
-	text-align  : center;
+	margin 				: auto;
+	width 				: 60%;
+	text-align  		: center;
 }
 
 div.polynom_container {
-	margin 	: 0.25em 0.5em;
-	padding : 0.2em;
-	cursor  : pointer;
-	display : inline-block;
+	margin 				: 0.25em 0.5em;
+	padding 			: 0.2em;
+	cursor 				: pointer;
+	display 			: inline-block;
 }
 .irreducible_polynom {
 	border 				: 1px dotted;
-//	background-color	: #f0f0f0;
 }
 
-select.order_select {
-	font-size : 1em;
-}
+
 
 
