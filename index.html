@@ -49,7 +49,9 @@
 		<h2>&#10043; How to use? &#10043;</h2>
 		<p>
 			First, construct a prime field:
-<pre><code class="javascript">var field = new PrimeField(7);
+<pre><code class="javascript">// In node.js you should add:
+// var PrimeField = require('rye').PrimeField;
+var field = new PrimeField(7);
 
 // Fields have + and * operations
 field.add(5, 4); // = 2
@@ -79,7 +81,7 @@ polynom.degree();       // = 2
 nullPolynom.degree();   // = -Infinity
 
 // You can add, multiply, divide polynoms
-ring.add(polynom, ring.polynom([5, 1]); // = [1, 1, 4]
+ring.add(polynom, ring.polynom([5, 1])); // = [1, 1, 4]
 ring.mod(polynom, nullPolynom); // Exception: division by zero!
 </code></pre>
 		</p>	
