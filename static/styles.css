@@ -1,31 +1,30 @@
 ﻿body {
-	font-family 	: 'Bookman Old Style', 'Book Antiqua', 'Garamond', 'Georgia';
+	font-family		: 'Bookman Old Style', Georgia, Garamond;
 	margin 			: 0 auto;
-	width			: 50%;
+	width			: 40em;
 	margin-bottom 	: 2.5em;
 	text-align		: justify;
-	min-width		: 40em;
 }
 
 h1 {
-	font-size 	: 120px;
-	font-weight : 100;
-	text-align 	: center;
-	margin 		: 0;
-	color		: #353535;
+	font-size 		: 120px;
+	font-weight 	: 100;
+	text-align 		: center;
+	margin 			: 0;
+	color			: #353535;
 }
 
 h2 {
-	margin		: 1em;
-	text-align 	: center;
-	font-weight	: 100;
+	margin			: 1em;
+	text-align 		: center;
+	font-weight		: 100;
 }
 
 p {
-	text-indent : 2.5em;
-	margin		: 0;
-	line-height	: 1.5em;
-	font-size	: 1.2em;
+	text-indent 	: 2.5em;
+	margin			: 0;
+	line-height		: 1.5em;
+	font-size		: 1.2em;
 }
 
 a:visited {
@@ -47,11 +46,11 @@ div.urlbox {
 }
 
 span.protocol {
-	color 	: #71B37B;
+	color 			: #71B37B;
 }
 
 span.server {
-	color 	: #90ACBB;
+	color 			: #90ACBB;
 }
 
 span.resource {
@@ -61,7 +60,4 @@ span.resource {
 code {
 	font-size : 1.2em;
 }
-
-
-
 
