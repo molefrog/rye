@@ -2,6 +2,7 @@
   "name": "rye",
   "description": "JavaScript implemetation of Galois (finite) fields algebra for academic purposes",
   "version": "0.0.1",
+  "homepage": "http://molefrog.github.com/rye",
   "author": {
     "name": "molefrog",
     "email": "molefrog@gmail.com"
