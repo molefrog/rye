@@ -1,3 +1,4 @@
+
 body {
 	font-size			: 0.85em;
 	font-family 		: 'Bookman Old Style', 'Book Antiqua', 'Garamond', 'Georgia';
@@ -16,10 +17,10 @@ td, th {
 }
 
 div.header {
-	font-family			: 'Ceviche One';
-	color				: #C67474;
-	text-shadow			: 1px 1px 1px black;
-	font-size   		: 7em;
+	font-family			: 'Norican', cursive;
+	color				: #5D8485;
+	text-shadow			: 0px 1px 1px black;
+	font-size   		: 6em;
 	margin 				: 0 0 0 0;
 	padding 			: 0;
 	font-weight 		: 100;
@@ -54,8 +55,8 @@ div.separator {
 
 div.colored_element {
 	border				: none;
-	min-height			: 1.6em; 
-	width 				: 1.6em; 
+	min-height			: 20px; 
+	width 				: 20px; 
 	display 			: block; 
 }
 
