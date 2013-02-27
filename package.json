@@ -20,14 +20,14 @@
   },
   "main": "lib/rye.js",
   "scripts" : {
-    "test" : "mocha -r should -R spec spec/"
+    "test" : "mocha -r chai -R spec spec/"
   },
   "dependencies" : {
 
   },
   "devDependencies": {
     "mocha"  : "*",
-    "should" : "*"
+    "chai" : "*"
   },
   "optionalDependencies": {},
   "engines": {

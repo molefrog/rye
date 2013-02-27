@@ -1,7 +1,8 @@
 if(typeof exports === 'undefined') {
 	rye = window;
 } else {
- 	rye = require('../lib/rye.js');
+ 	rye    = require('../lib/rye.js');
+ 	should = require('chai').should(); 
 }
 
 describe('class PolynomRing', function() {
@@ -13,24 +14,24 @@ describe('class PolynomRing', function() {
 			var nullPolynom = ring.polynom();
 			
 			nullPolynom.coefficients().should.eql([0]);
-			nullPolynom.degree().should.eql(-Infinity);
-			nullPolynom.app(4).should.eql(0);
-			nullPolynom.app(3).should.eql(0);
+			nullPolynom.degree().should.equal(-Infinity);
+			nullPolynom.app(4).should.equal(0);
+			nullPolynom.app(3).should.equal(0);
 		});
 		
 		it('has degree property', function() {
-			ring.polynom([1, 1, 1, 1]).degree().should.eql(3);
-			ring.polynom([0, 0, 1, 0, 0, 0, 0]).degree().should.eql(2);
+			ring.polynom([1, 1, 1, 1]).degree().should.equal(3);
+			ring.polynom([0, 0, 1, 0, 0, 0, 0]).degree().should.equal(2);
 		});
 		
 		it('can be applicabled', function() {
-			ring.polynom([3, 0, 1, 5]).app(3).should.eql(0);
+			ring.polynom([3, 0, 1, 5]).app(3).should.equal(0);
 		});
 	});
 	
 	it('has euclidean norm', function() {
-		ring.norm( ring.polynom() ).should.eql(-Infinity);
-		ring.norm( ring.polynom([1, 2, 0, 2, 0, 0, 0])).should.eql(3);
+		ring.norm( ring.polynom() ).should.equal(-Infinity);
+		ring.norm( ring.polynom([1, 2, 0, 2, 0, 0, 0])).should.equal(3);
 	});
 	
 	it('can add two polynoms', function() {
@@ -44,8 +45,8 @@ describe('class PolynomRing', function() {
 	});
 	
 	it('can multiply two polynoms', function() {
-		ring.mul( ring.polynom([0, 0, 1]), ring.polynom([0, 1])).degree().should.eql(3);
-		ring.mul( ring.polynom(), ring.polynom([1, 2, 2])).degree().should.eql(-Infinity);
+		ring.mul( ring.polynom([0, 0, 1]), ring.polynom([0, 1])).degree().should.equal(3);
+		ring.mul( ring.polynom(), ring.polynom([1, 2, 2])).degree().should.equal(-Infinity);
 		ring.mul( ring.polynom([1, 2, 1]), ring.polynom([1, 2])).coefficients().should.eql([ 1, 4, 5, 2 ]);
 	});
 	
@@ -81,7 +82,7 @@ describe('class PolynomRing', function() {
 		var factorSet = ring.factorSet( ring.polynom([1, 2, 1, 1]) );
 		
 		(ring.equal(ring.polynom(), factorSet[0]) ).should.be.ok;
-		(factorSet.length).should.eql(Math.pow(ring.field.order, 3));
-		ring.factorSet(ring.polynom([1])).length.should.eql(1);
+		(factorSet.length).should.equal(Math.pow(ring.field.order, 3));
+		ring.factorSet(ring.polynom([1])).length.should.equal(1);
 	});	
 });
