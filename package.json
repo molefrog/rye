@@ -1,0 +1,36 @@
+{
+  "name": "rye",
+  "description": "JavaScript implemetation of Galois (finite) fields algebra for academic purposes",
+  "version": "0.0.2",
+  "homepage": "http://molefrog.github.com/rye",
+  "author": {
+    "name": "molefrog",
+    "email": "molefrog@gmail.com"
+  },
+  "keywords": [
+    "galois",
+    "finite",
+    "fields",
+    "algebra",
+    "math"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/molefrog/rye"
+  },
+  "main": "lib/rye.js",
+  "scripts" : {
+    "test" : "mocha -r chai -R spec spec/"
+  },
+  "dependencies" : {
+
+  },
+  "devDependencies": {
+    "mocha"  : "*",
+    "chai" : "*"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
