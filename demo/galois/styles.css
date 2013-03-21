@@ -17,11 +17,17 @@ td, th {
 }
 
 div.header {
-	font-family			: 'Norican', cursive;
-	color				: #5D8485;
-	text-shadow			: 0px 1px 1px black;
-	font-size   		: 6em;
-	margin 				: 0 0 0 0;
+	color : #DE4E80;
+	font-family :  "Leckerli One";
+	/* Took this from css-tricks.com */
+  	text-shadow:
+       3px 3px 0 #492E59,
+     -1px -1px 0 #492E59,  
+      1px -1px 0 #492E59,
+      -1px 1px 0 #492E59,
+       1px 1px 0 #492E59;
+	font-size   		: 5em;
+	margin 				: 10px 0 0 0;
 	padding 			: 0;
 	font-weight 		: 100;
 	text-align 			: center;
