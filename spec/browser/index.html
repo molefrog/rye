@@ -23,6 +23,7 @@
     <script>
       onload = function(){
         chai.should();
+        mocha.setup({ ignoreLeaks : true });
         var runner = mocha.run();
       };
     </script>
