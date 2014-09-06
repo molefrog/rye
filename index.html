@@ -4,15 +4,15 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<link rel="stylesheet" href="static/styles.css" type="text/css">
 		<link rel="shortcut icon" href="static/favicon.ico" />
-		
+
 		<!-- Highlight.js library for code highlighting. Thanks to Ivan Salagaev -->
 		<script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
 		<script> hljs.initHighlightingOnLoad(); </script>
 		<!-- Using Zenburn theme -->
 		<link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/zenburn.min.css">
-				
+
 		<title>Rye</title>
-		
+
 		<!-- Google Analytics Code -->
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
@@ -26,30 +26,30 @@
 		  })();
 		</script>
 	</head>
-	
+
 	<body>
 		<!-- Fork me on github banner -->
 		<a href="https://github.com/molefrog/rye"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
-		
+
 		<!-- Rye header -->
 		<h1>
 			<img src="static/rye-small.png"></img>
 			Rye
 			<img src="static/rye-small.png"></img>
 		</h1>
-		
+
 		<div id="maincontainer">
 		<h2>&#10043; Legend &#10043;</h2>
 		<p>
-			Rye &mdash; is a JavaScript library that allows to work with 
+			Rye &mdash; is a JavaScript library that allows to work with
 			<a href="http://en.wikipedia.org/wiki/Finite_field">finite (Galois) fields.</a>
-			With Rye you can construct prime fields as well as build extension of existing field. 
+			With Rye you can construct prime fields as well as build extension of existing field.
 			And yes, you can use it in your browser!
 		</p>
 		<h2>&#10043; How to use? &#10043;</h2>
 		<p>
 			First, construct a prime field:
-<pre><code class="javascript">// In node.js you should add:
+<pre><code class="javascript">// When using with Node.js you have to add:
 // var PrimeField = require('rye').PrimeField;
 var field = new PrimeField(7);
 
@@ -65,64 +65,64 @@ field.mul(field.oneElement(), 5);  // = 5
 field.opp(3); // = 4
 field.inv(3); // = 5
 </code></pre>
-			
+
 		</p>
-		
+
 		<p>
-			Now, make a polynom ring based on this field:
+			Now, make a polynomial ring based on this field:
 <pre><code class="javascript">var ring = new PolynomRing(field);
 
-// Construct polynoms
+// Construct polynomials
 var polynom = ring.polynom([3, 0, 4]); // 3 + 4x^2
 var nullPolynom = ring.polynom(); // 0
 
-// Each polynom has a degree
+// Each polynomial has a degree
 polynom.degree();       // = 2
 nullPolynom.degree();   // = -Infinity
 
-// You can add, multiply, divide polynoms
+// You can add, multiply, divide polynomials
 ring.add(polynom, ring.polynom([5, 1])); // = [1, 1, 4]
 ring.mod(polynom, nullPolynom); // Exception: division by zero!
 </code></pre>
-		</p>	
-		
+		</p>
+
 		<p>
-		Finally, extend your field by factorizing ring using irreducible polynom:
+		Finally, extend your field by factorizing ring using irreducible polynomial:
 <pre><code class="javascript">var extField = new FactorRing(ring, ring.polynom([3, 1, 2]));
 
-// This structure is also a field (of course, if polynom 
+// This structure is also a field (of course, if the polynomial
 // is irreducible, otherwise it is a ring)
 var extFieldOrder = extField.order; // == 7^2
-</code></pre>		
+</code></pre>
 		</p>
-		
+
 		<h2>&#10043; Demo &#10043;</h2>
 		<p>
 			You can see the library in action in <a href="demo/galois">this demo.</a> <a href="http://www.mathjax.org/">MathJax library</a> is used for rendering formulas.
 		</p>
-		
+
 		<h2>&#10043; Specs &#10043;</h2>
 		<p>
-			<a href="spec/browser">Check this out!</a> The library's code is well test-covered (in fact, spec-covered). 
+			<a href="spec/browser">Check this out!</a> The library's code is well test-covered (in fact, spec-covered).
 			<a href="http://visionmedia.github.com/mocha/">Mocha test framework</a> is used for tests.
 		</p>
-		
+
 		<h2>&#10043; I want it! &#10043;</h2>
 		<p>
 			There is no need to clone github repo. You can use the library right now!
-			<div class="urlbox"> 
+			<div class="urlbox">
 				<a href="http://molefrog.github.com/rye/lib/rye.js">
 					<span class="protocol">http://</span><span class="server">molefrog.github.com</span><span class="resource">/rye/lib/rye.js</span>
-				</a> 
+				</a>
 			</div>
 		</p>
 		<p>
 			Node.js version is also available:
-			<div class="urlbox"> 
+			<div class="urlbox">
 				<span class="protocol">npm</span> <span class="server">install</span> <span class="resource">rye</span>
 			</div>
 		</p>
-		
+
 		<h2>~</h2>
 		</div>
 	</body>
